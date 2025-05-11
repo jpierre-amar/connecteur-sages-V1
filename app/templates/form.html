@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion Base de Données</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center py-10 px-4">
+
+  <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">Connexion à une base de données</h1>
+
+  {% if message %}
+    <p class="mb-6 text-lg font-semibold text-center text-green-600">{{ message }}</p>
+  {% endif %}
+
+  <div class="flex flex-col md:flex-row gap-8 w-full max-w-6xl">
+
+    <!-- SQL Server Form -->
+    <div class="bg-white shadow-lg rounded-lg p-6 w-full md:w-1/2">
+      <h2 class="text-xl font-semibold mb-4 text-gray-700">Connexion SQL Server</h2>
+      <form method="post" action="/connect-sqlserver" class="space-y-4">
+        <div>
+          <label class="block text-gray-600">Serveur</label>
+          <input type="text" name="server" placeholder="localhost\\SAGEBAT" required
+                 class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+        </div>
+        <div>
+          <label class="block text-gray-600">Utilisateur</label>
+          <input type="text" name="user" placeholder="test" required
+                 class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+        </div>
+        <div>
+          <label class="block text-gray-600">Mot de passe</label>
+          <input type="password" name="password" required
+                 class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+        </div>
+        <div>
+          <label class="block text-gray-600">Base de données</label>
+          <input type="text" name="database" placeholder="BTG_DOS_DEMO" required
+                 class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+        </div>
+        <button type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg">
+          Se connecter à SQL Server
+        </button>
+      </form>
+    </div>
+
+    <!-- PostgreSQL Form -->
+    <div class="bg-white shadow-lg rounded-lg p-6 w-full md:w-1/2">
+      <h2 class="text-xl font-semibold mb-4 text-gray-700">Connexion PostgreSQL</h2>
+      <form method="post" action="/connect-postgres" class="space-y-4">
+        <div>
+          <label class="block text-gray-600">Hôte</label>
+          <input type="text" name="host" placeholder="localhost" required
+                 class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+        </div>
+        <div>
+          <label class="block text-gray-600">Utilisateur</label>
+          <input type="text" name="user" placeholder="postgres" required
+                 class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+        </div>
+        <div>
+          <label class="block text-gray-600">Mot de passe</label>
+          <input type="password" name="password" required
+                 class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+        </div>
+        <div>
+          <label class="block text-gray-600">Base de données</label>
+          <input type="text" name="database" placeholder="connecteur_buffer" required
+                 class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+        </div>
+        <div>
+          <label class="block text-gray-600">Port</label>
+          <input type="text" name="port" placeholder="5432" value="5432"
+                 class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+        </div>
+        <button type="submit"
+                class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg">
+          Se connecter à PostgreSQL
+        </button>
+      </form>
+    </div>
+        <!-- Transfert des chantiers -->
+        <form method="post" action="/transfer" class="mt-6">
+            <button type="submit"
+                    class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded">
+                Transférer les chantiers vers PostgreSQL
+            </button>
+        </form>
+  </div>
+  
+</body>
+</html>
